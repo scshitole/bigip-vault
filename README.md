@@ -19,9 +19,10 @@ vault policy write app-pol app-pol.hcl
 vault write auth/approle/role/web-certs policies="app-pol"
 vault read -format=json auth/approle/role/web-certs/role-id | jq -r '.data.role_id' > roleID
 vault write -f -format=json auth/approle/role/web-certs/secret-id | jq -r '.data.secret_id' > secretID
-vault agent -config=agent-config.hcl -log-level=debug ```
+vault agent -config=agent-config.hcl -log-level=debug
+```
 - Open a new terminal and SSH into the ubuntu server again.
 - Run the command ``` bash stuff.sh ``` this will deploy the AS3 rpm  & VIP
-- Stop the vault agent and uncomment ``` command = "bash updt.sh" ``` 
+- Stop the vault agent and uncomment ``` command = "bash updt.sh" ``` in the file agent-config.hcl 
 - Run ``` vault agent -config=agent-config.hcl -log-level=debug ``` to update the certs automatically
 
