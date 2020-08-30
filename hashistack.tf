@@ -64,6 +64,17 @@ resource "aws_instance" "vault" {
       host        = aws_instance.vault.public_ip
     }
   }
+  provisioner "file" {
+    source      = "as3/updt.sh"
+    destination = "/tmp/updt.sh"
+    connection {
+      type        = "ssh"
+      user        = "ubuntu"
+      private_key = file("${aws_key_pair.demo.key_name}.pem")
+      host        = aws_instance.vault.public_ip
+    }
+  }
+
    provisioner "file" {
     source      = "as3/install-rpm.sh"
     destination = "/tmp/install-rpm.sh"
@@ -87,7 +98,8 @@ resource "aws_instance" "vault" {
    provisioner "remote-exec" {
         inline                  = [
             "chmod +x /tmp/stuff.sh",
-            "chmod +x /tmp/install-rpm.sh"
+            "chmod +x /tmp/install-rpm.sh",
+            "chmod +x /tmp/updt.sh"
         ]
     
      connection {

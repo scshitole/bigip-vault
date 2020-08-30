@@ -24,7 +24,7 @@ auto_auth {
 template {
   source      = "./certs.tmpl"
   destination = "./certs.json"
-  #command = "${UPDATE_VIP}"
+  #command = "bash updt.sh"
 }
 
 template {
