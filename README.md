@@ -11,8 +11,7 @@ This repo uses HashiCorp Vault to manage SSL Certificates
 - This will deploy F5 BIG-IP intance & install Vault on ubuntu on AWS
 - SSH into the ubuntu server and cd/tmp
 - Configure vault and use vaul agent
-
-  ``` export VAULT_ADDR=http://127.0.0.1:8200
+``` export VAULT_ADDR=http://127.0.0.1:8200
 export VAULT_TOKEN=root
 vault write pki/roles/web-certs allowed_domains=demo.com ttl=60s max_ttl=30m allow_subdomains=true 
 vault auth enable approle
