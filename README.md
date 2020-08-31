@@ -1,4 +1,4 @@
-# F5 BIG-IP HashiCorp Vault Integration to manage SSL Certs.
+# F5 BIG-IP HashiCorp Vault Integration
 
 This repo uses HashiCorp Vault to manage SSL Certificates
 
